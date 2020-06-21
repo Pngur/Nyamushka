@@ -1,24 +1,18 @@
-# Fundraise test application
+# FunBox Technical Task 
 ## Preview
-![Image](https://i.ibb.co/VvWvZsC/2020-05-19-12-04-30.png)
+![Image](https://i.ibb.co/Q6wQNsv/nyama.png)
 
 ## Installing
 
 Clone repository
 ```
-git clone https://github.com/byabuzyak/fundraise.git
+git clone https://github.com/Pngur/Nyamushka.git
 ```
 Install
 ``` 
 npm install
 ```
-Build
-```
-npm run build
-```
-And run the server
-```
-npm run serve
+npm start
 ```
 
 ### All done
