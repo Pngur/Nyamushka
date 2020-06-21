@@ -12,8 +12,11 @@ Install
 ``` 
 npm install
 ```
+Start
+``` 
 npm start
 ```
+
 
 ### All done
 Now you can visit
