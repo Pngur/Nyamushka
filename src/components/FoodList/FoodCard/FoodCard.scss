@@ -1,0 +1,173 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/mixins.scss';
+
+.FoodCard {
+    
+    &__Wrap {
+        @include WrapCard ($color-default-card);
+        
+        &.Selected {
+            @include WrapCard ($color-selected-card);
+        }
+
+        &.Disabled  {
+            @include WrapCard ($color-disabled);
+        } 
+        
+        &.HoverOut {
+            @include WrapCard ($color-selected-hover-card);
+        }
+    }
+
+    &__Paragraph {
+        font-size: 1.3rem;
+        margin-top: 1.7rem;
+        text-align: center;
+        color: $color-white-light;
+
+        &.Disabled {
+            color: $color-basic-yellow;
+        }
+    }
+}
+
+.FoodItem {
+    
+    background-image: linear-gradient(135deg, transparent 2.7rem, $color-white-dark 0);
+    color: $color-black-basic;
+    border-radius: .7rem;
+    height: 47rem;
+    padding: 2rem 0 0 4.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+&__Info  {
+    color: $color-basic-grey;
+
+    &.Disabled  {
+        opacity: .2;
+    }
+}
+
+&__Tagline {
+    height: .5rem;
+    position: relative;
+    top:0;
+    left: 0;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 200;
+
+    & > * {
+        position:absolute;
+        top:0;
+        left:0;
+        transition: all .5s;
+    }
+
+    &--HoverTag, &--Show {
+        color: $color-selected-hover-card
+    }
+
+    &--HoverTag, &--Hide {
+        transform: translateY(-300%);
+        opacity: 0;
+    }
+
+    &--Show , &--DefaultTag {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} 
+
+&__Heading {
+    color: $color-black-basic;
+    font-family: "Trebuchet MS";
+    font-size: 4.8rem;
+    margin-left: -.2rem;
+}
+
+&__Topping {
+    color:$color-black-basic;
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+}
+
+&__Portion, &__Gift {
+    font-size: 1.4rem;
+    color: $color-basic-grey;
+    font-weight: bold;
+}
+
+&__Image {
+    position: absolute;
+    top: 2.5rem;
+    right: -21.5rem;
+    transform: scale(0.5);
+
+    &.Disabled  {
+        opacity: .4;
+    }
+
+    @include respond(bp4) {
+        top: -1.5rem;
+        right: -28.5rem;
+    }
+}
+
+&__Weight {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    background-color: $color-default-card;
+    @include flexbox;
+    flex-direction: column;
+    @include centerContent;
+    text-align: center;
+    color: $color-white-light;
+
+    & > *:first-child {
+        font-size: 4.2rem;
+    }
+
+    & > *:last-child {
+        font-size: 1.5rem;
+    }
+
+    &.Selected {
+        background-color: $color-selected-card;
+    }
+    
+    &.HoverOut {
+        background-color: $color-selected-hover-card;
+    }
+
+    &.Disabled  {
+        background-color: lighten($color-disabled, 10%) ;
+    }
+}
+}
+
+a {
+text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:active {
+color: $color-default-card;
+border-bottom: 1px dashed $color-default-card;
+}
+
+// DEFAULT HOVER
+@include hover (".FoodCard__Wrap", $color-default-hover-card);
+@include hover (".FoodItem__Weight", $color-default-hover-card);
+@include hover ("a", $color-default-hover-card);
+
+//  SELECTED FAKE HOVER
+@include hover (".FoodItem__Weight.Selected", $color-selected-card);
+@include hover (".FoodCard__Wrap.Selected", $color-selected-card);

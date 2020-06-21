@@ -1,0 +1,97 @@
+/* 
+MEDIA QUERY MANAGER 
+
+breakpoint-1:  75em     - 1200px
+breakpoint-2:  68,75em  - 1100px‬
+breakpoint-3:  48em     - 768px
+breakpoint-4:  25em     - 400px
+
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == bp1 {
+        @media (max-width: 75em) { @content; }
+    }
+
+    @if $breakpoint == bp2 {
+        @media (max-width: 68.75em) { @content; }
+    }
+
+    @if $breakpoint == bp3 {
+        @media (max-width: 48em) { @content; }
+    }
+
+    @if $breakpoint == bp4 {
+        @media (max-width: 25em) { @content; }
+    }
+}
+
+
+// FLEX PREFIXES 
+@mixin flexbox {
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: -webkit-flex; 
+    display: flex;
+}
+
+// CENTER ITEMS
+@mixin centerContent {
+    justify-content: center;
+    align-items: center;
+}
+
+// WRAP LINE
+@mixin WrapCard ( $color ) {
+    width: 32rem;
+    height: 48rem;
+    padding: .5rem;
+    background-image: linear-gradient(135deg, transparent 2.8rem, $color 0);
+    border-radius: 1rem;
+}
+
+//  HOVER MANAGER 
+$parentSelector: (".FoodCard:hover ");
+
+@mixin hover ( $class, $param ) {
+  
+    @if $class == ".FoodItem__Weight" {
+        #{$parentSelector $class}  {
+            background-color: $param;
+        }
+    }
+
+    @if $class == ".FoodItem__Weight.Disabled" {
+        #{$parentSelector $class}  {
+            background-color: $param;
+        }
+    }
+
+
+    @if $class == ".FoodCard__Wrap" {
+        #{$parentSelector $class}  {
+            background-image: linear-gradient(135deg, transparent 2.8rem, $param 0);
+        }
+    }
+
+    @if $class == "a" {
+        #{$parentSelector $class}  {
+            color: $param;
+        }  
+    }
+
+    @if $class == ".FoodCard__Wrap.Selected" {
+        #{$parentSelector $class}  {
+            background-image: linear-gradient(135deg, transparent 2.8rem, $param 0);
+        }  
+    }
+
+    @if $class == ".FoodItem__Weight.Selected" {
+        #{$parentSelector $class}  {
+            background-color: $param;
+        }  
+    }
+}
+
+
+

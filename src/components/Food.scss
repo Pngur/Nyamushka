@@ -1,0 +1,63 @@
+@import '../styles/colors.scss';
+@import '../styles/mixins.scss';
+
+.SectionFood {
+    height: 100vh;
+    background-image: url('../assets/Shadow.png');
+    background-size: cover;
+    overflow: hidden;
+    
+    &__CardList {
+        @include flexbox;
+        @include centerContent;
+                
+        flex-wrap: wrap;
+        
+        & > *:not(:first-child) {
+            margin-left: 8rem;
+
+            @include respond(bp1) {
+                 margin-left: 5rem;
+            }
+
+            @include respond(bp2) {
+                 margin-left: 8rem;
+            } 
+
+            @include respond(bp3) {
+                margin: 3.5rem 0;
+           } 
+        } 
+
+        & > *:last-child {
+            @include respond(bp2) {
+                margin: 3.5rem ;
+            } 
+
+            @include respond(bp3) {
+                margin-top: 0;
+           } 
+        }
+
+        @include respond(bp3) {
+            flex-direction: column;
+        }
+    }
+    
+    &__Header {
+        font-family: 'Exo 2', sans-serif;
+        margin: 4.7rem 0 2.3rem 0;
+        text-align: center;
+        color: $color-white-light;
+        font-size: 3.6rem;
+        font-weight: 200;
+
+        @include respond(bp2) {
+            margin-top: 2rem;
+        }
+    }
+
+    @include respond(bp2) {
+        height: auto;
+   } 
+}
