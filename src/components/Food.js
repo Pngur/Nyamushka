@@ -50,8 +50,6 @@ const Food = props => {
     ]);
     
     const [selectedCards, setSelectedCards] = useState(['2']);
-    console.log(selectedCards);
-
     const [hoverCards, dispatch] = useReducer(reducer, []);
     const selectCardHandler = cardId => {  
         setSelectedCards(prevState => prevState.indexOf(cardId) !== -1 ?
