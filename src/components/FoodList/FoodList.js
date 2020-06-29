@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
-
-import './FoodList.scss';
 import FoodCard from './FoodCard/FoodCard';
 
-
-const FoodList = props => {
+const FoodList = props => {   
     
     let foodCards = props.foodcards.map( card => (
             <FoodCard
@@ -18,18 +15,18 @@ const FoodList = props => {
                 inStock={card.inStock}
                 paragraph={card.paragraph}
                 
-                selectedCard={props.selectedCard}
+                selectedCard={() => props.selectedCard(card.id)}
                 hoverIn={props.hoverIn}
                 hoverOut={props.hoverOut}
                 hoverOutCard={props.hoverOutCard}
                 selected={props.selected}
-            />
+                wordSuffix={props.wordSuffix}
+                mouseLeave={props.selected.find(id => id === card.id) ? () => props.hoverOut(card.id) : null}
+                mouseEnter={props.selected.find(id => id === card.id) ? () => props.hoverIn(card.id) : null}/>
     ));
 
     return (
-        <>
-          {foodCards}
-        </>
+        <>{foodCards}</>
     );
 };
 
@@ -39,7 +36,5 @@ FoodList.propTypes = {
     hoverOut: PropTypes.func.isRequired,
     selected: PropTypes.array.isRequired,
  };
-
-
 
 export default FoodList;

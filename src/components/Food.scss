@@ -1,5 +1,6 @@
 @import '../styles/colors.scss';
 @import '../styles/mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200&display=swap');
 
 .SectionFood {
     height: 100vh;
@@ -58,6 +59,6 @@
     }
 
     @include respond(bp2) {
-        height: auto;
+        height: 100%;
    } 
 }

@@ -26,7 +26,6 @@ breakpoint-4:  25em     - 400px
     }
 }
 
-
 // FLEX PREFIXES 
 @mixin flexbox {
     display: -webkit-box;  
@@ -50,7 +49,7 @@ breakpoint-4:  25em     - 400px
     border-radius: 1rem;
 }
 
-//  HOVER MANAGER 
+// HOVER MANAGER 
 $parentSelector: (".FoodCard:hover ");
 
 @mixin hover ( $class, $param ) {
@@ -67,14 +66,13 @@ $parentSelector: (".FoodCard:hover ");
         }
     }
 
-
     @if $class == ".FoodCard__Wrap" {
         #{$parentSelector $class}  {
             background-image: linear-gradient(135deg, transparent 2.8rem, $param 0);
         }
     }
 
-    @if $class == "a" {
+    @if $class == ".Button" {
         #{$parentSelector $class}  {
             color: $param;
         }  

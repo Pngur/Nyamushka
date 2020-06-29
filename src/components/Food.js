@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from 'react';
-
 import  './Food.scss';
 import FoodList from './FoodList/FoodList';
 
@@ -16,7 +15,7 @@ const reducer = ( state, action ) => {
     }
 };
 
-const Food = props => {
+const Food = () => {
 
     const [ cardsList ] = useState([  
         {
@@ -36,7 +35,6 @@ const Food = props => {
             weight: 2,
             inStock: true,
             paragraph: 'Головы щучьи с чесноком да свежайшая сёмгушка.'
-
         },
         {
             id: '3',
@@ -49,37 +47,40 @@ const Food = props => {
         }
     ]);
     
-    const [selectedCards, setSelectedCards] = useState(['2']);
+    const [selectedCards, setSelectedCards] = useState([]);
     const [hoverCards, dispatch] = useReducer(reducer, []);
+
     const selectCardHandler = cardId => {  
         setSelectedCards(prevState => prevState.indexOf(cardId) !== -1 ?
-                            [...prevState.filter(id => id !== cardId)] :
-                                                [...prevState, cardId])
+        [...prevState.filter(id => id !== cardId)] :
+        [...prevState, cardId]);
     };
 
-    const hoverOutHandler = (hoverOutId) => {  
-        dispatch({type: "HOVER-OUT", hoverOutId:hoverOutId})
+    const hoverOutHandler = hoverOutId => {  
+        dispatch({type: "HOVER-OUT", hoverOutId:hoverOutId});
     };
-             
-    const hoverInHandler = (hoverInId) => { 
-        dispatch({type: "HOVER-IN", hoverInId:hoverInId})
+        
+    const hoverInHandler = hoverInId => { 
+        dispatch({type: "HOVER-IN", hoverInId:hoverInId});
     };
 
-    
+    const wordSuffixHandler = (num, words) => (num % 10 === 1 && num % 100 !== 11 ? `1 ${words[0]}` :
+        num % 10 >= 2 && num % 10 <= 4  && (num % 100 <= 10 || num % 100 >= 20) ?
+        `${num} ${words[1]}` :`${num} ${words[2]}`);
 
     return (
         <section className='SectionFood'>
-                <h1 className='SectionFood__Header'>Ты сегодня покормил кота?</h1>
-                <div className='SectionFood__CardList'>
-                <FoodList 
-                    foodcards={cardsList} 
-                    selected={selectedCards}
-                    hoverOutCard={hoverCards}
-                    selectedCard={selectCardHandler}
-                    hoverOut={hoverOutHandler}
-                    hoverIn={hoverInHandler}
-                />
-                </div>
+            <h1 className='SectionFood__Header'>Ты сегодня покормил кота?</h1>
+            <div className='SectionFood__CardList'>
+            <FoodList 
+                foodcards={cardsList} 
+                selected={selectedCards}
+                hoverOutCard={hoverCards}
+                selectedCard={selectCardHandler}
+                hoverOut={hoverOutHandler}
+                hoverIn={hoverInHandler}
+                wordSuffix={wordSuffixHandler}/>
+            </div>
         </section>
     );
 };

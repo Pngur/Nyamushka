@@ -1,6 +1,6 @@
 # FunBox Technical Task 
 ## Preview
-![Image](https://i.ibb.co/Q6wQNsv/nyama.png)
+![Image](https://i.ibb.co/93B2fnW/nyamuska.png)
 
 ## Installing
 
